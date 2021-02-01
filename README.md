@@ -1,2 +1,2 @@
 # ByteCode
-Game Programming Patternのバイトコード実装
+Game Programming Patternsのバイトコード実装
