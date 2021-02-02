@@ -17,6 +17,9 @@ public enum Instruction : byte
 
 	INST_LITERAL = 0x10,
 	INST_ADD = 0x11,
+	INST_SUB = 0x12,
+	INST_MUL = 0x13,
+	INST_DIV = 0x14,
 }
 
 public class Wizard
@@ -47,6 +50,27 @@ public class VirtualMachine
 						int b = Pop();
 						int a = Pop();
 						Push(a + b);
+					}
+					break;
+				case (byte)Instruction.INST_SUB:
+					{
+						int b = Pop();
+						int a = Pop();
+						Push(a - b);
+					}
+					break;
+				case (byte)Instruction.INST_MUL:
+					{
+						int b = Pop();
+						int a = Pop();
+						Push(a * b);
+					}
+					break;
+				case (byte)Instruction.INST_DIV:
+					{
+						int b = Pop();
+						int a = Pop();
+						Push(a / b);
 					}
 					break;
 

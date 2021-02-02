@@ -75,15 +75,39 @@ namespace Tests.Editor
 			Assert.IsTrue(vm.GetStackTop() == a + b);
 		}
 
-		/*
 		[TestCase(0, 45, 7, 11)]
-		public void InterpretTest(int wizard)
+		public void UseCaseTest(int wizard, int health, int wisdom, int agility)
 		{
 			byte[] bytes = new byte[] {
+				// Init
+				(byte)Instruction.INST_LITERAL, (byte)wizard,
+				(byte)Instruction.INST_LITERAL, (byte)health,
+				(byte)Instruction.INST_SET_HEALTH,
+				(byte)Instruction.INST_LITERAL, (byte)wizard,
+				(byte)Instruction.INST_LITERAL, (byte)wisdom,
+				(byte)Instruction.INST_SET_WISDOM,
+				(byte)Instruction.INST_LITERAL, (byte)wizard,
+				(byte)Instruction.INST_LITERAL, (byte)agility,
+				(byte)Instruction.INST_SET_AGILITY,
+
+				// health = health + (wisdom + agility) / 2
+				(byte)Instruction.INST_LITERAL, (byte)wizard,
 				(byte)Instruction.INST_LITERAL, (byte)wizard,
 				(byte)Instruction.INST_GET_HEALTH,
+				(byte)Instruction.INST_LITERAL, (byte)wizard,
+				(byte)Instruction.INST_GET_AGILITY,
+				(byte)Instruction.INST_LITERAL, (byte)wizard,
+				(byte)Instruction.INST_GET_WISDOM,
+				(byte)Instruction.INST_ADD,
+				(byte)Instruction.INST_LITERAL, 2,
+				(byte)Instruction.INST_DIV,
+				(byte)Instruction.INST_ADD,
+				(byte)Instruction.INST_SET_HEALTH,
 			};
+
+			vm.Interpret(bytes);
+
+			Assert.IsTrue(vm.GetWizard(wizard).health == (health + (wisdom + agility) / 2));
 		}
-		*/
 	}
 }
